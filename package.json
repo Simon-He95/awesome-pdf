@@ -1,0 +1,74 @@
+{
+  "name": "awesome-pdf",
+  "version": "0.0.0",
+  "packageManager": "pnpm@7.26.1",
+  "description": "vitepress",
+  "author": "Simon He",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git + git@github.com:Simon-He95/vitepress.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Simon-He95/vitepress/issues"
+  },
+  "keywords": [
+    "vitepress"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=14.6"
+  },
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "postinstall": "simple-git-hooks",
+    "dev": "vitepress dev docs --open",
+    "build": "vitepress build docs",
+    "preview": "vitepress serve docs",
+    "format": "prettier --write --cache .",
+    "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx,.md,.json --max-warnings 0 --cache",
+    "lint:fix": "pnpm run lint --fix",
+    "test": "vitest -u",
+    "release": "bumpp --commit --tag --push && pnpm publish"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.33.0",
+    "@types/node": "^18.0.0",
+    "bumpp": "^8.2.1",
+    "eslint": "^8.26.0",
+    "lint-staged": "^13.1.0",
+    "pkgroll": "^1.4.0",
+    "prettier": "^2.8.1",
+    "simple-git-hooks": "^2.8.1",
+    "tsx": "^3.12.1",
+    "typescript": "^4.8.4",
+    "vitepress": "^1.0.0-alpha.22",
+    "vitest": "^0.25.0",
+    "vue-pdf": "^4.3.0"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm exec lint-staged --concurrent false",
+    "commit-msg": "pnpm exec tsx scripts/verifyCommit.ts $1"
+  },
+  "lint-staged": {
+    "*": [
+      "prettier --write --cache --ignore-unknown"
+    ],
+    "*.{vue,js,ts,jsx,tsx,md,json}": "eslint --fix"
+  },
+  "eslintConfig": {
+    "extends": "@antfu"
+  }
+}
