@@ -32,7 +32,6 @@
     "node": ">=14.6"
   },
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "postinstall": "simple-git-hooks",
     "dev": "vitepress dev docs --open",
     "build": "vitepress build docs",
