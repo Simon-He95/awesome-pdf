@@ -1,7 +1,7 @@
 {
   "name": "awesome-pdf",
   "version": "0.0.0",
-  "packageManager": "pnpm@7.18.2",
+  "packageManager": "pnpm@7.29.1",
   "description": "vitepress",
   "author": "Simon He",
   "license": "MIT",
